@@ -1,22 +1,11 @@
 #!/usr/bin/env bash
-#|---/ /+--------------------------+---/ /|#
-#|--/ /-| Main installation script |--/ /-|#
-#|-/ /--| Prasanth Rangan          |-/ /--|#
-#|/ /---+--------------------------+/ /---|#
 
-cat << "EOF"
-
--------------------------------------------------
-        .
-       / \         _       _  _      ___  ___
-      /^  \      _| |_    | || |_  _|   \| __|
-     /  _  \    |_   _|   | __ | || | |) | _|
-    /  | | ~\     |_|     |_||_|\_, |___/|___|
-   /.-'   '-.\                  |__/
-
--------------------------------------------------
-
-EOF
+repo-add /home/jason/jasorepo/jasorepo.db.tar.zst
+repo-add /home/jason/jasorepo/jasorepo.db.tar.zst /home/jason/jasorepo/*.pkg.tar.zst
+sudo pacman -Syy
+sudo pacman -Fyy
+pacman -Qeqt > before.txt
+echo -ne '1\n1\n1\ny\ny\n' | sudo pacman -S pipewire-jack
 
 #--------------------------------#
 # import variables and functions #
@@ -51,7 +40,7 @@ EOF
 
     echo -ne '1\n' | "${scrDir}/install_pre.sh"
 fi
-
+sudo pacman -Syy
 #------------#
 # installing #
 #------------#
