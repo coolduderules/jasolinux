@@ -1,0 +1,10 @@
+ssl/*
+group
+passwd
+ssh
+wpa_supplicant
+skel
+profile*
+pcp*
+pulse
+qemu

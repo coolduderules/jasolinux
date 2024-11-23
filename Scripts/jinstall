@@ -1,0 +1,59 @@
+#!/bin/bash
+lin="LIN_DRIVE"
+esp="ESP_DRIVE"
+swap="SWAP_DRIVE"
+
+if [ $EUID != 0 ]; then
+    sudo "$0" "$@"
+    exit $?
+fi
+
+umount /mnt
+umount LABEL=$esp LABEL=$lin
+umount /dev/sdc1 /dev/sdc3
+umount /mnt
+mkfs.fat -F 32 -n $esp /dev/sdc1
+mkfs.ext4 -L $lin /dev/sdc3
+mkswap -L $swap /dev/sdc2
+mount LABEL=$lin /mnt
+mount -m LABEL=$esp /mnt/boot
+
+mkdir -p /mnt/home/jason/.packages
+mkdir /mnt/shared
+mkdir -p /mnt/home/jason/jasorepo
+
+rsync -axHAWXSR --info=progress2 /home/jason/scripts/ /mnt/
+rsync -axHAWXSR --info=progress2 /etc/pacman.d/ /mnt/
+rsync -axHAWXSR --info=progress2 /etc/pacman.conf /mnt/
+
+archinstall --advanced --config user_configuration.json --creds user_credentials.json --silent
+
+echo "jason ALL=(ALL:ALL) NOPASSWD: ALL" >> /mnt/etc/sudoers
+rm -rf /var/lib/pacman/sync/*
+rm -rf /home/jason/jasorepo/jasorepo.*
+rm -rf /home/jason/jasorepo/*.sig
+chown -R jason /home/jason
+chmod -R 777 /home/jason/jasorepo
+arch-chroot -u jason /mnt /home/jason/scripts/jpost.sh
+{
+systemctl enable sshd
+pacman -Sy
+pacman -Qq > qq.txt
+pacman -Qeqt > qeqt.txt
+mkinitcpio -P
+grub-install --efi-directory=/boot --boot-directory=/boot --removable
+grub-mkconfig -o /boot/grub/grub.cfg
+exit
+} | arch-chroot /mnt
+
+sed -i '$ d' /mnt/etc/sudoers
+rsync -axHAWXSR --info=progress2 /home/jason/.config /mnt/
+rsync -axHAWXSR --info=progress2 /home/jason/.zshrc /mnt/
+rm -rf /mnt/usr/share/wayland-sessions/hyprland-systemd.desktop
+echo 'LABEL=LIN_DRIVE            /         ext4      rw,relatime 0 1' > /mnt/etc/fstab
+echo 'LABEL=ESP_DRIVE            /boot    vfat     rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro 0 2' >> /mnt/etc/fstab
+echo 'LABEL=SWAP_DRIVE            none       swap       defaults,x-systemd.device-timeout=1   0 0' >> /mnt/etc/fstab
+
+umount LABEL=$esp LABEL=$lin
+umount /dev/sdc1 /dev/sdc3
+exit

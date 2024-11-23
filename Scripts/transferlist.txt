@@ -1,0 +1,9 @@
+.
+home/jason/.config/
+/home/jason/scripts
+c/etc/pacman.d/
+/etc/makepkg.conf
+/etc/locale.gen
+/etc/locale.conf
+/etc/pacman.conf
+
