@@ -26,8 +26,10 @@ mkdir -p /mnt/home/jason/jasorepo
 rsync -axHAWXSR --info=progress2 /etc/pacman.d/ /mnt/
 rsync -axHAWXSR --info=progress2 /etc/pacman.conf /mnt/
 
-archinstall --advanced --config user_configuration.json --creds user_credentials.json --silent
-
+archinstall --advanced --config /home/jason/user_configuration.json --creds /home/jason/user_credentials.json --silent
+rsync -axHAWXSR --info=progress2 /etc/pacman.conf /mnt/
+rsync -axHAWXSR --info=progress2 /etc/pacman.d/ /mnt/
+rsync -axHAWXSR --info=progress2 /usr/bin/makepkg /mnt/
 echo "jason ALL=(ALL:ALL) NOPASSWD: ALL" >> /mnt/etc/sudoers
 rm -rf /var/lib/pacman/sync/*
 rm -rf /home/jason/jasorepo/jasorepo.*

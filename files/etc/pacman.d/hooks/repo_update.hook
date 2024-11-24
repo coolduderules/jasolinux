@@ -6,5 +6,5 @@ Target = *
 
 [Action]
 When = PostTransaction
-Exec = /bin/sh -c 'xargs -I {} /home/jason/scripts/update-repo.sh {}'
+Exec = /bin/sh -c 'xargs -I {} /home/jason/jasolinux/Scripts/update-repo.sh {}'
 NeedsTargets

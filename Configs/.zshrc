@@ -5,6 +5,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+
 # Oh-my-zsh installation path
 ZSH=/usr/share/oh-my-zsh/
 
@@ -85,6 +87,8 @@ alias ...='cd ../..'
 alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
+
+alias nix="noglob nix"
 
 jfind () {
     sudo /usr/bin/find / -path "*$1*" -name "*$2*" -name "*$3*" -name "*$4*" -name "*$5*"
