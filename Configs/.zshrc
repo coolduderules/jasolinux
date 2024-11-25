@@ -106,4 +106,4 @@ alias mkdir='mkdir -p'
 pokemon-colorscripts --no-title -r 1,3,6
 
 # Created by `pipx` on 2024-11-03 09:49:59
-export PATH="$PATH:/home/jason/.local/bin"
+export PATH="$PATH:/home/jason/jasolinux/Scripts:/home/jason/.local/bin"
