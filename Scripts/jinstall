@@ -14,7 +14,7 @@ umount LABEL=$esp LABEL=$lin
 umount /dev/sdc1 /dev/sdc3
 umount /mnt
 mkfs.fat -F 32 -n $esp /dev/sdc1
-mkfs.ext4 -L $lin /dev/sdc3
+mkfs.btrfs -f -L $lin /dev/sdc3
 mkswap -L $swap /dev/sdc2
 mount LABEL=$lin /mnt
 mount -m LABEL=$esp /mnt/boot
