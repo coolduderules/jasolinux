@@ -30,7 +30,7 @@ then
             su -c "repo-add /home/jason/jasorepo/jasorepo.db.tar.zst /home/jason/jasorepo/$p" jason
             echo "Inside PPP"
 	    else
-		    for j in ${pacman -Qetq}; do
+		    for j in $(pacman -Qetq); do
 		        m=`ls /var/cache/pacman/pkg/ | grep "$j" | sort | head -1` 
 		        rsync -avh "/var/cache/pacman/pkg/$m" /home/jason/jasorepo/.
 		        su -c "repo-add -n /home/jason/jasorepo/jasorepo.db.tar.zst /home/jason/jasorepo/$m" jason
