@@ -38,7 +38,7 @@ rm -rf /mnt/home/jason/jasorepo/jasorepo.*
 rm -rf /mnt/home/jason/jasorepo/*.sig
 chown -R jason /mnt/home/jason
 chmod -R 777 /mnt/home/jason/jasorepo
-arch-chroot -u jason /mnt bash -c "git clone https://github.com/coolduderules/jasolinux.git /home/jason/jasolinux"  #&& /home/jason/jasolinux/Scripts/jpost.sh
+arch-chroot -u jason /mnt /home/jason/jasolinux/Scripts/jpost.sh
 
 
 #sed -i '$ d' /mnt/etc/sudoers
