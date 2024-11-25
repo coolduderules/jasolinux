@@ -10,6 +10,7 @@ if [ $? -ne 0 ]; then
     echo "Error: unable to source global_fn.sh..."
     exit 1
 fi
+sddmtheme="Candy" # Candy or Corners
 
 # sddm
 if pkg_installed sddm; then
@@ -22,12 +23,6 @@ if pkg_installed sddm; then
     if [ ! -f /etc/sddm.conf.d/kde_settings.t2.bkp ]; then
         echo -e "\033[0;32m[DISPLAYMANAGER]\033[0m configuring sddm..."
         echo -e "Select sddm theme:\n[1] Candy\n[2] Corners"
-        read -p " :: Enter option number : " sddmopt
-
-        case $sddmopt in
-        1) sddmtheme="Candy" ;;
-        *) sddmtheme="Corners" ;;
-        esac
 
         sudo tar -xzf ${cloneDir}/Source/arcs/Sddm_${sddmtheme}.tar.gz -C /usr/share/sddm/themes/
         sudo touch /etc/sddm.conf.d/kde_settings.conf
