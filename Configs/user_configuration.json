@@ -1,0 +1,56 @@
+{
+    "additional-repositories": [],
+    "archinstall-language": "English",
+    "audio_config": null,
+    "bootloader": "Grub",
+    "config_version": "3.0.0",
+    "custom-commands": [
+        "pacman --noconfirm -Syu"
+    ],
+    "disk_config": {
+        "config_type": "pre_mounted_config",
+        "mountpoint": "/mnt"
+    },
+    "disk_encryption": null,
+    "hostname": "JasoLinux",
+    "kernels": [
+        "linux"
+    ],
+    "locale_config": {
+        "kb_layout": "us",
+        "sys_enc": "UTF-8",
+        "sys_lang": "en_US"
+    },
+    "mirror_config": null,
+    "network_config": {
+        "type": "nm"
+    },
+    "ntp": true,
+    "packages": [
+        "openssh",
+        "git",
+        "base-devel",
+        "rsync",
+        "pacman-contrib",
+        "kate"
+    ],
+    "parallel downloads": 0,
+    "profile_config": {
+        "gfx_driver": null,
+        "greeter": null,
+        "profile": {
+            "custom_settings": {},
+            "details": [],
+            "main": "Minimal"
+        }
+    },
+    "save_config": null,
+    "script": "guided",
+    "skip_ntp": false,
+    "silent": true,
+    "skip_version_check": false,
+    "swap": true,
+    "timezone": "US/Eastern",
+    "uki": false,
+    "version": "3.0.0"
+}
