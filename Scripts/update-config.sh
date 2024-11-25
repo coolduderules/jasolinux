@@ -11,3 +11,5 @@ rsync -axHAWXSR --info=progress2 /etc/environment /home/jason/jasolinux/files/
 rsync -axHAWXSR --info=progress2 /usr/bin/makepkg /home/jason/jasolinux/files/
 rsync -axHAWXS --info=progress2 /home/jason/.config/hypr/ /home/jason/jasolinux/Configs/.config/hypr/
 rsync -axHAWXS --info=progress2 /home/jason/.zshrc /home/jason/jasolinux/Configs/
+rsync -axHAWXS --info=progress2 /home/jason/user_configuration.json /home/jason/jasolinux/Configs/
+rsync -axHAWXS --info=progress2 /home/jason/user_credentials.json /home/jason/jasolinux/Configs/
