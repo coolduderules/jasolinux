@@ -33,6 +33,7 @@ rsync -axHAWXSR --info=progress2 /usr/bin/makepkg /mnt/
 rsync -axHAWXSR --info=progress2 /home/jason/.s3cfg /mnt/
 rsync -axHAWXSR --info=progress2 /home/jason/.aws
 echo "jason ALL=(ALL:ALL) NOPASSWD: ALL" >> /mnt/etc/sudoers
+sed -i 's/#auth           sufficient      pam_wheel.so trust use_uid/auth           sufficient      pam_wheel.so trust use_uid/' /mnt/etc/pam.d/su
 rm -rf /mnt/var/lib/pacman/sync/*
 rm -rf /mnt/home/jason/jasorepo/jasorepo.*
 rm -rf /mnt/home/jason/jasorepo/*.sig
@@ -43,7 +44,7 @@ arch-chroot -u jason /mnt /home/jason/jpost.sh
 
 
 #sed -i '$ d' /mnt/etc/sudoers
-
+#sed -i 's/auth           sufficient      pam_wheel.so trust use_uid/#auth           sufficient      pam_wheel.so trust use_uid/' /mnt/etc/pam.d/su
 #umount LABEL=$esp LABEL=$lin
 #umount /dev/sdc1 /dev/sdc3
 exit
