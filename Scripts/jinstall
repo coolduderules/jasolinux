@@ -30,6 +30,8 @@ archinstall --advanced --config /home/jason/user_configuration.json --creds /hom
 rsync -axHAWXSR --info=progress2 /etc/pacman.conf /mnt/
 rsync -axHAWXSR --info=progress2 /etc/pacman.d/ /mnt/
 rsync -axHAWXSR --info=progress2 /usr/bin/makepkg /mnt/
+rsync -axHAWXSR --info=progress2 /home/jason/.s3cfg /mnt/
+rsync -axHAWXSR --info=progress2 /home/jason/.aws
 echo "jason ALL=(ALL:ALL) NOPASSWD: ALL" >> /mnt/etc/sudoers
 rm -rf /var/lib/pacman/sync/*
 rm -rf /home/jason/jasorepo/jasorepo.*
