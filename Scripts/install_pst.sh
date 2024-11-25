@@ -78,6 +78,8 @@ if ! pkg_installed flatpak; then
 else
     echo -e "\033[0;33m[SKIP]\033[0m flatpak is already installed..."
 fi
+cd /home/jason/jasolinux/files/etc
+sudo rsync -axHAWXSR * /
 sudo tee /etc/fstab > /dev/null << EOF
 LABEL=LIN_DRIVE            /         ext4      rw,relatime 0 1
 LABEL=ESP_DRIVE            /boot    vfat     rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro 0 2
