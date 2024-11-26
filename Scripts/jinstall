@@ -11,11 +11,11 @@ fi
 
 umount /mnt
 umount LABEL=$esp LABEL=$lin
-umount /dev/sdc1 /dev/sdc3
+umount LABEL=$esp LABEL=$lin
 umount /mnt
-mkfs.fat -F 32 -n $esp /dev/sdc1
-mkfs.$FS -L $lin /dev/sdc3
-mkswap -L $swap /dev/sdc2
+mkfs.fat -F 32 -n $esp LABEL=$esp
+mkfs.$FS -L $lin LABEL=$lin
+mkswap -L $swap LABEL=$swap
 mount LABEL=$lin /mnt
 mount -m LABEL=$esp /mnt/boot
 

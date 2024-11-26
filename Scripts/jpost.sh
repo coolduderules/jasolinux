@@ -3,7 +3,11 @@
 cd /home/jason
 git clone https://github.com/coolduderules/jasolinux.git
 cd /home/jason/jasolinux/Scripts
-sudo sysctl kernel.unprivileged_userns_clone=1
+sudo pacman -Fyy
+sudo pacman -Syy
+sudo rm -rf /home/jason/jasorepo/jasorepo.*
+repo-add /home/jason/jasorepo/jasorepo.db.tar.zst
+echo -ne 'y\ny\n' | sudo pacman -S bubblewrap-suid
 sudo mkinitcpio -P
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 echo -ne 'y\n' | ./install.sh -drs
