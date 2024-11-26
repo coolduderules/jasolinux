@@ -13,9 +13,9 @@ umount /mnt
 umount LABEL=$esp LABEL=$lin
 umount LABEL=$esp LABEL=$lin
 umount /mnt
-mkfs.fat -F 32 -n $esp LABEL=$esp
-mkfs.$FS -L $lin LABEL=$lin
-mkswap -L $swap LABEL=$swap
+mkfs.fat -F 32 -n $esp /dev/disk/by-label/$esp
+mkfs.$FS -L $lin /dev/disk/by-label/$lin
+mkswap -L $swap /dev/disk/by-label/$swap
 mount LABEL=$lin /mnt
 mount -m LABEL=$esp /mnt/boot
 
@@ -24,7 +24,8 @@ mkdir /mnt/shared
 mkdir -p /mnt/home/jason/jasorepo
 
 rsync -axHAWXSR --info=progress2 /etc/pacman.d/ /mnt/
-rsync -axHAWXSR --info=progress2 /etc/pacman.conf /mnt/
+rsync -axHAWXSR --info=progress2ngerprints
+2 extra/bubblewrap-suid 0.11.0-1 (41.6 KiB 96.9 KiB) 	Unprivileged sandboxing tool (s /etc/pacman.conf /mnt/
 
 archinstall --advanced --config /home/jason/jasolinux/Configs/user_configuration.json --creds /home/jason/jasolinux/Configs/user_credentials.json --silent
 rsync -axHAWXSR --info=progress2 /etc/pacman.conf /mnt/
