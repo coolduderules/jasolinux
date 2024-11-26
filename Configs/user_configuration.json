@@ -45,10 +45,6 @@
         }
     },
     "save_config": null,
-    "script": "guided",
-    "skip_ntp": false,
-    "silent": true,
-    "skip_version_check": false,
     "swap": true,
     "timezone": "US/Eastern",
     "uki": false,
