@@ -3,7 +3,7 @@
 trap "\n echo exiting...; exit" SIGHUP SIGINT SIGTERM
 paccache -r -k 1 >/dev/null 2>&1
 paccache -r -k 1 -c /home/jason/jasorepo/ >/dev/null 2>&1
-paccache -r -k 1 -c /home/jason/.packages/ 2>&1 >/dev/null
+paccache -r -k 1 -c /home/jason/.packages/ >/dev/null 2>&1
 
 if [[ "$#" != "0" ]]; then
     echo "Importing packages..."
