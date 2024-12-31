@@ -46,7 +46,8 @@
         "less",
         "t2fanrd",
         "tiny-dfr",
-        "iwd"
+        "iwd",
+        "pacutils"
     ],
     "parallel downloads": 4,
     "profile_config": {
