@@ -2,7 +2,7 @@
 lin="LINMAC"
 esp="ESPMAC"
 swap="SWAPMAC"
-FS="ext4"   # btrfs -f OR ext4
+FS="ext4" # btrfs -f OR ext4
 
 if [ $EUID != 0 ]; then
     sudo "$0" "$@"
@@ -21,9 +21,9 @@ mount -m /dev/disk/by-label/$esp /mnt/boot
 
 mkdir -p /mnt/etc/pacman.d/hooks
 
-rsync -axHAWXS --info=progress2 /home/jason/jasolinux/etc/pacman.d/ /mnt/etc/pacman.d/
-rsync -axHAWXS --info=progress2 /home/jason/jasolinux/etc/pacman.conf /mnt/etc/
-ln -sf ../run/systemd/resolve/stub-resolv.conf /mnt/etc/resolv.conf
+rsync -axHAWXS --info=progress2 /home/jason/jasolinux/files/etc/pacman.d/ /mnt/etc/pacman.d/
+rsync -axHAWXS --info=progress2 /home/jason/jasolinux/files/etc/pacman.conf /mnt/etc/
+#ln -sf ../run/systemd/resolve/stub-resolv.conf /mnt/etc/resolv.conf
 archinstall --advanced --config /home/jason/jasolinux/Source/user_configuration.json --creds /home/jason/jasolinux/Source/user_credentials.json --silent
 #rsync -axHAWXSR --info=progress2 /etc/pacman.conf /mnt/
 #rsync -axHAWXSR --info=progress2 /home/jason/.s3cfg /mnt/
@@ -35,7 +35,6 @@ archinstall --advanced --config /home/jason/jasolinux/Source/user_configuration.
 #chmod -R 777 /mnt/home/jason/jasorepo
 #rsync -axHAWXS --info=progress2 /home/jason/jasolinux/Scripts/jpost.sh /mnt/home/jason/
 #arch-chroot -u jason /mnt /home/jason/jpost.sh
-
 
 umount LABEL=$esp LABEL=$lin
 umount /dev/disk/by-label/$esp /dev/disk/by-label/$lin
