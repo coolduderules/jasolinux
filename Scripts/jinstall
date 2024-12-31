@@ -1,7 +1,7 @@
 #!/bin/bash
 lin="LINMAC"
 esp="ESPMAC"
-swap="SWAPMAC"
+#swap="SWAPMAC"
 FS="ext4" # btrfs -f OR ext4
 
 if [ $EUID != 0 ]; then

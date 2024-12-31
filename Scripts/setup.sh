@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo 'Defaults:jason      !authenticate' >> /etc/sudoers
+echo 'Defaults:jason      !authenticate' >>/etc/sudoers
 sed -i 's/#auth           sufficient      pam_wheel.so trust use_uid/auth           sufficient      pam_wheel.so trust use_uid/' /etc/pam.d/su
 pacman --noconfirm -Syu
 echo -ne 'y\ny\n' | pacman -S bubblewrap-suid
