@@ -5,7 +5,7 @@ repo-add /home/jason/jasorepo/jasorepo.db.tar.zst /home/jason/jasorepo/*.pkg.tar
 sudo pacman -Syy
 sudo pacman -Fyy
 pacman -Qeqt >before.txt
-echo -ne '1\n1\n1\ny\ny\n' | sudo -S pacman -S pipewire-jack
+echo -ne '1\n1\n1\ny\ny\n' | sudo pacman -S pipewire-jack
 
 #--------------------------------#
 # import variables and functions #
