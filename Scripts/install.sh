@@ -4,8 +4,8 @@ repo-add /home/jason/jasorepo/jasorepo.db.tar.zst
 repo-add /home/jason/jasorepo/jasorepo.db.tar.zst /home/jason/jasorepo/*.pkg.tar.zst
 sudo pacman -Syy
 sudo pacman -Fyy
-pacman -Qeqt > before.txt
-echo -ne '1\n1\n1\ny\ny\n' | sudo pacman -S pipewire-jack
+pacman -Qeqt >before.txt
+echo -ne '1\n1\n1\ny\ny\n' | sudo -S pacman -S pipewire-jack
 
 #--------------------------------#
 # import variables and functions #
@@ -29,7 +29,7 @@ export use_default="--noconfirm"
 # pre-install script #
 #--------------------#
 if [ ${flg_Install} -eq 1 ] && [ ${flg_Restore} -eq 1 ]; then
-    cat << "EOF"
+    cat <<"EOF"
                 _         _       _ _
  ___ ___ ___   |_|___ ___| |_ ___| | |
 | . |  _| -_|  | |   |_ -|  _| .'| | |
@@ -45,7 +45,7 @@ sudo pacman -Syy
 # installing #
 #------------#
 if [ ${flg_Install} -eq 1 ]; then
-    cat << "EOF"
+    cat <<"EOF"
 
  _         _       _ _ _
 |_|___ ___| |_ ___| | |_|___ ___
@@ -63,7 +63,7 @@ EOF
     cp "${scrDir}/custom_hypr.lst" "${scrDir}/install_pkg.lst"
 
     if [ -f "${cust_pkg}" ] && [ ! -z "${cust_pkg}" ]; then
-        cat "${cust_pkg}" >> "${scrDir}/install_pkg.lst"
+        cat "${cust_pkg}" >>"${scrDir}/install_pkg.lst"
     fi
 
     #--------------------------------#
@@ -71,9 +71,9 @@ EOF
     #--------------------------------#
     if nvidia_detect; then
         cat /usr/lib/modules/*/pkgbase | while read krnl; do
-            echo "${krnl}-headers" >> "${scrDir}/install_pkg.lst"
+            echo "${krnl}-headers" >>"${scrDir}/install_pkg.lst"
         done
-        nvidia_detect --drivers >> "${scrDir}/install_pkg.lst"
+        nvidia_detect --drivers >>"${scrDir}/install_pkg.lst"
     fi
 
     nvidia_detect --verbose
@@ -87,7 +87,7 @@ EOF
 
     if ! chk_list "myShell" "${shlList[@]}"; then
         export myShell="zsh"
-        echo "${myShell}" >> "${scrDir}/install_pkg.lst"
+        echo "${myShell}" >>"${scrDir}/install_pkg.lst"
     fi
 
     #--------------------------------#
@@ -101,7 +101,7 @@ fi
 # restore my custom configs #
 #---------------------------#
 if [ ${flg_Restore} -eq 1 ]; then
-    cat << "EOF"
+    cat <<"EOF"
 
              _           _
  ___ ___ ___| |_ ___ ___|_|___ ___
@@ -114,19 +114,18 @@ EOF
     "${scrDir}/restore_fnt.sh"
     "${scrDir}/restore_cfg.sh"
     echo -e "\n\033[0;32m[themepatcher]\033[0m Patching themes..."
-    while IFS='"' read -r null1 themeName null2 themeRepo
-    do
+    while IFS='"' read -r null1 themeName null2 themeRepo; do
         themeNameQ+=("${themeName//\"/}")
         themeRepoQ+=("${themeRepo//\"/}")
         themePath="${confDir}/hyde/themes/${themeName}"
         [ -d "${themePath}" ] || mkdir -p "${themePath}"
-        [ -f "${themePath}/.sort" ] || echo "${#themeNameQ[@]}" > "${themePath}/.sort"
-    done < "${scrDir}/themepatcher.lst"
+        [ -f "${themePath}/.sort" ] || echo "${#themeNameQ[@]}" >"${themePath}/.sort"
+    done <"${scrDir}/themepatcher.lst"
     parallel --bar --link "${scrDir}/themepatcher.sh" "{1}" "{2}" "{3}" "{4}" ::: "${themeNameQ[@]}" ::: "${themeRepoQ[@]}" ::: "--skipcaching" ::: "false"
     echo -e "\n\033[0;32m[cache]\033[0m generating cache files..."
     "$HOME/.local/share/bin/swwwallcache.sh" -t ""
-    if printenv HYPRLAND_INSTANCE_SIGNATURE &> /dev/null; then
-        "$HOME/.local/share/bin/themeswitch.sh" &> /dev/null
+    if printenv HYPRLAND_INSTANCE_SIGNATURE &>/dev/null; then
+        "$HOME/.local/share/bin/themeswitch.sh" &>/dev/null
     fi
 fi
 
@@ -134,7 +133,7 @@ fi
 # post-install script #
 #---------------------#
 if [ ${flg_Install} -eq 1 ] && [ ${flg_Restore} -eq 1 ]; then
-    cat << "EOF"
+    cat <<"EOF"
 
              _      _         _       _ _
  ___ ___ ___| |_   |_|___ ___| |_ ___| | |
@@ -151,7 +150,7 @@ fi
 # enable system services #
 #------------------------#
 if [ ${flg_Service} -eq 1 ]; then
-    cat << "EOF"
+    cat <<"EOF"
 
                  _
  ___ ___ ___ _ _|_|___ ___ ___
@@ -170,5 +169,5 @@ EOF
             sudo systemctl start "${servChk}.service"
         fi
 
-    done < "${scrDir}/system_ctl.lst"
+    done <"${scrDir}/system_ctl.lst"
 fi
