@@ -28,7 +28,7 @@ archinstall --advanced --config /home/jason/jasolinux/Source/user_configuration.
 
 echo 'Defaults:jason      !authenticate' >>/etc/sudoers
 sed -i 's/#auth           sufficient      pam_wheel.so trust use_uid/auth           sufficient      pam_wheel.so trust use_uid/' /etc/pam.d/su
-find /home/jason/jasolinux/files/ -type f | sed 's/\/home\/jason\/jasolinux\/files//' | xargs -I {} pacrepairfile {} --uid --gid --mode --root=/mnt --dbpath=/var/lib/pacman
+find /home/jason/jasolinux/files/ | sed 's/\/home\/jason\/jasolinux\/files//' | xargs -I {} pacrepairfile {} --uid --gid --mode --root=/mnt --dbpath=/var/lib/pacman
 arch-chroot /mnt /home/jason/jasolinux/Scripts/setup.sh
 sed -i '$ d' /etc/sudoers
 sed -i 's/auth           sufficient      pam_wheel.so trust use_uid/#auth           sufficient      pam_wheel.so trust use_uid/' /etc/pam.d/su
