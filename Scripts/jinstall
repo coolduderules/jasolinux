@@ -26,7 +26,7 @@ rsync -axHAWXS --info=progress2 /home/jason/jasolinux/files/etc/pacman.conf /mnt
 ln -sf ../run/systemd/resolve/stub-resolv.conf /mnt/etc/resolv.conf
 archinstall --advanced --config /home/jason/jasolinux/Source/user_configuration.json --creds /home/jason/jasolinux/Source/user_credentials.json --silent
 
-echo 'Defaults:jason      !authenticate' >>/etc/sudoers
+echo 'Defaults:jason      !authenticate' >> /etc/sudoers
 sed -i 's/#auth           sufficient      pam_wheel.so trust use_uid/auth           sufficient      pam_wheel.so trust use_uid/' /etc/pam.d/su
 find /home/jason/jasolinux/files/ | sed 's/\/home\/jason\/jasolinux\/files//' | xargs -I {} pacrepairfile /mnt{} --uid --gid --mode --root=/mnt --dbpath=/var/lib/pacman
 arch-chroot /mnt /home/jason/jasolinux/Scripts/setup.sh
