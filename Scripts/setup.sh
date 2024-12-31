@@ -7,5 +7,4 @@ systemctl enable iptables ip6tables systemd-networkd systemd-resolved iwd sshd
 echo -ne 'y\ny\n' | pacman -S bubblewrap-suid
 mkinitcpio -P
 grub-mkconfig -o /boot/grub/grub.cfg
-echo'1111' | sudo -S echo "success"
 su -c '/home/jason/jasolinux/Scripts/install.sh -drs' jason
