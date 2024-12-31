@@ -1,0 +1,8 @@
+systemd-networkd
+systemd-resolved
+iptables
+ip6tables
+iwd
+sshd
+bluetooth
+sddm

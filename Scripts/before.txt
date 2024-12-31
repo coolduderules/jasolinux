@@ -1,0 +1,13 @@
+apple-firmware
+base
+bubblewrap-suid
+grub
+intel-ucode
+iwd
+kate
+man-db
+nano
+pacman-contrib
+rsync
+xorg-xhost
+zram-generator

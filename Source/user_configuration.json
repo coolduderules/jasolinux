@@ -1,0 +1,66 @@
+{
+    "additional-repositories": [],
+    "archinstall-language": "English",
+    "audio_config": null,
+    "bootloader": "Grub",
+    "config_version": "3.0.0",
+    "custom-commands": [
+        "su -c 'cd /home/jason && git clone https://github.com/coolduderules/jasolinux.git' jason",
+	"cd /home/jason/jasolinux/files/ && rsync -axHAWXSR usr/lib/ / && rsync -axHAWXSR usr/lib64/ /",
+	"/home/jason/jasolinux/files/usr/bin/metastore -af /home/jason/jasolinux/files/.metadata",
+	"rsync -axHAWXS /home/jason/jasolinux/files/ /",
+	"pacman --noconfirm -U /home/jason/jasolinux/pkgs/apple-firmware-1-1-any.pkg.tar.zst",
+	"systemctl enable iptables ip6tables systemd-networkd systemd-resolved iwd sshd",
+        "/home/jason/jasolinux/Scripts/setup.sh"
+    ],
+    "disk_config": {
+        "config_type": "pre_mounted_config",
+        "mountpoint": "/mnt"
+    },
+    "disk_encryption": null,
+    "hostname": "JasoLinux",
+    "kernels": [
+        "linux"
+    ],
+    "locale_config": {
+        "kb_layout": "us",
+        "sys_enc": "UTF-8",
+        "sys_lang": "en_US"
+    },
+    "mirror_config": null,
+    "network_config": {
+        "type": null
+    },
+    "ntp": true,
+    "packages": [
+        "openssh",
+        "git",
+        "base-devel",
+        "rsync",
+        "pacman-contrib",
+        "kate",
+	"xorg-xhost",
+	"xorg-xauth",
+	"gnome-keyring",
+	"nano",
+	"man-db",
+	"less",
+	"t2fanrd",
+	"tiny-dfr"
+    ],
+    "parallel downloads": 4,
+    "profile_config": {
+        "gfx_driver": null,
+        "greeter": null,
+        "profile": {
+            "custom_settings": {},
+            "details": [],
+            "main": "Minimal"
+        }
+    },
+    "save_config": null,
+    "swap": true,
+    "timezone": "US/Eastern",
+    "uki": false,
+    "version": "3.0.0"
+}

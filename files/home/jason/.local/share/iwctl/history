@@ -1,0 +1,24 @@
+exit
+device list
+exit
+help
+exit
+station
+station list
+station wlan0 connect "Morningstar 5G"
+exit
+station list
+adapter list
+device list
+known-networks 
+known-networks list 
+ad-hoc list 
+ls
+exit
+station list 
+ip route
+station wlan0 connect "Morningstar 5G"
+station wlp229s0 connect
+station wlp229s0 connect "Morningstar 5G" 
+station wlp229s0 connect "Morningstar 5G"
+exit

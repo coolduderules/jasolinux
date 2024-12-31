@@ -1,0 +1,10 @@
+/lib/libreadline.so
+/lib/libc.so
+/lib/libncursesw.so
+/lib64/ld-linux-x86-64.so
+/lib/libattr.so
+/lib/libcap-ng.so
+/lib/libacl.so
+/lib/libaudit.so
+/bin/bash
+/bin/useradd
