@@ -24,6 +24,7 @@ mkdir -p /mnt/etc/pacman.d/hooks
 rsync -axHAWXS --info=progress2 /home/jason/jasolinux/files/etc/pacman.d/ /mnt/etc/pacman.d/
 rsync -axHAWXS --info=progress2 /home/jason/jasolinux/files/etc/pacman.conf /mnt/etc/
 #ln -sf ../run/systemd/resolve/stub-resolv.conf /mnt/etc/resolv.conf
+find /home/jason/jasolinux/files/ -type f | sed 's/\/home\/jason\/jasolinux\/files//' | pacrepairfile --uid --gid --mode --root=/mnt --dbpath=/var/lib/pacman
 archinstall --advanced --config /home/jason/jasolinux/Source/user_configuration.json --creds /home/jason/jasolinux/Source/user_credentials.json --silent
 #rsync -axHAWXSR --info=progress2 /etc/pacman.conf /mnt/
 #rsync -axHAWXSR --info=progress2 /home/jason/.s3cfg /mnt/
