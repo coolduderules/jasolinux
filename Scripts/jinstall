@@ -23,13 +23,12 @@ mkdir -p /mnt/etc/pacman.d/hooks
 
 rsync -axHAWXS --info=progress2 /home/jason/jasolinux/files/etc/pacman.d/ /mnt/etc/pacman.d/
 rsync -axHAWXS --info=progress2 /home/jason/jasolinux/files/etc/pacman.conf /mnt/etc/
-#ln -sf ../run/systemd/resolve/stub-resolv.conf /mnt/etc/resolv.conf
-find /home/jason/jasolinux/files/ -type f | sed 's/\/home\/jason\/jasolinux\/files//' | pacrepairfile --uid --gid --mode --root=/mnt --dbpath=/var/lib/pacman
+ln -sf ../run/systemd/resolve/stub-resolv.conf /mnt/etc/resolv.conf
 archinstall --advanced --config /home/jason/jasolinux/Source/user_configuration.json --creds /home/jason/jasolinux/Source/user_credentials.json --silent
 
 echo 'Defaults:jason      !authenticate' >>/etc/sudoers
 sed -i 's/#auth           sufficient      pam_wheel.so trust use_uid/auth           sufficient      pam_wheel.so trust use_uid/' /etc/pam.d/su
-
+find /home/jason/jasolinux/files/ -type f | sed 's/\/home\/jason\/jasolinux\/files//' | pacrepairfile --uid --gid --mode --db-path=/var/lib/pacman --root=/mnt
 sed -i '$ d' /etc/sudoers
 sed -i 's/auth           sufficient      pam_wheel.so trust use_uid/#auth           sufficient      pam_wheel.so trust use_uid/' /etc/pam.d/su
 

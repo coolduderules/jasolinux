@@ -8,8 +8,7 @@
         "su -c 'cd /home/jason && git clone https://github.com/coolduderules/jasolinux.git' jason",
         "rsync -axHAWXS /home/jason/jasolinux/files/ /",
         "pacman --noconfirm -U /home/jason/jasolinux/pkgs/apple-firmware-1-1-any.pkg.tar.zst",
-        "systemctl enable iptables ip6tables systemd-networkd systemd-resolved iwd sshd",
-        "/home/jason/jasolinux/Scripts/setup.sh"
+        "systemctl enable iptables ip6tables systemd-networkd systemd-resolved iwd sshd"
     ],
     "disk_config": {
         "config_type": "pre_mounted_config",
