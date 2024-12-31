@@ -26,11 +26,18 @@ rsync -axHAWXS --info=progress2 /home/jason/jasolinux/files/etc/pacman.conf /mnt
 #ln -sf ../run/systemd/resolve/stub-resolv.conf /mnt/etc/resolv.conf
 find /home/jason/jasolinux/files/ -type f | sed 's/\/home\/jason\/jasolinux\/files//' | pacrepairfile --uid --gid --mode --root=/mnt --dbpath=/var/lib/pacman
 archinstall --advanced --config /home/jason/jasolinux/Source/user_configuration.json --creds /home/jason/jasolinux/Source/user_credentials.json --silent
+
+echo 'Defaults:jason      !authenticate' >>/etc/sudoers
+sed -i 's/#auth           sufficient      pam_wheel.so trust use_uid/auth           sufficient      pam_wheel.so trust use_uid/' /etc/pam.d/su
+
+sed -i '$ d' /etc/sudoers
+sed -i 's/auth           sufficient      pam_wheel.so trust use_uid/#auth           sufficient      pam_wheel.so trust use_uid/' /etc/pam.d/su
+
 #rsync -axHAWXSR --info=progress2 /etc/pacman.conf /mnt/
 #rsync -axHAWXSR --info=progress2 /home/jason/.s3cfg /mnt/
 #rsync -axHAWXSR --info=progress2 /home/jason/.aws
 #rm -rf /mnt/var/lib/pacman/sync/*
-#rm -rf /mnt/home/jason/jasorepo/jasorepo.*
+#rm -rf /mnt/home/jason/jasorepo/jasorepo
 #rm -rf /mnt/home/jason/jasorepo/*.sig
 #chown -R jason /mnt/home/jason
 #chmod -R 777 /mnt/home/jason/jasorepo
