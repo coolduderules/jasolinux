@@ -1,5 +1,8 @@
 #!/usr/bin/bash
 
+pacman --noconfirm -U /home/jason/jasolinux/pkgs/apple-firmware-1-1-any.pkg.tar.zst
+systemctl enable iptables ip6tables systemd-networkd systemd-resolved iwd sshd
+
 pacman --noconfirm -Syu
 echo -ne 'y\ny\n' | pacman -S bubblewrap-suid
 mkinitcpio -P
