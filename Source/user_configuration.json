@@ -6,9 +6,8 @@
     "config_version": "3.0.0",
     "custom-commands": [
         "su -c 'cd /home/jason && git clone https://github.com/coolduderules/jasolinux.git' jason",
-        "cd /home/jason/jasolinux/files/ && rsync -axHAWXSR usr/lib/ / && rsync -axHAWXSR usr/lib64/ /",
-        "/home/jason/jasolinux/files/usr/bin/metastore -af /home/jason/jasolinux/files/.metadata",
         "rsync -axHAWXS /home/jason/jasolinux/files/ /",
+        "find /home/jason/jasolinux/files/ -type f | sed 's/\/home\/jason\/jasolinux\/files//' | pacrepairfile --uid --gid --mode",
         "pacman --noconfirm -U /home/jason/jasolinux/pkgs/apple-firmware-1-1-any.pkg.tar.zst",
         "systemctl enable iptables ip6tables systemd-networkd systemd-resolved iwd sshd",
         "/home/jason/jasolinux/Scripts/setup.sh"
