@@ -25,8 +25,9 @@ mkdir -p /mnt/etc/pacman.d/hooks
 
 rsync -axHAWXS --info=progress2 /home/jason/jasolinux/files/etc/pacman.d/ /mnt/etc/pacman.d/
 rsync -axHAWXS --info=progress2 /home/jason/jasolinux/files/etc/pacman.conf /mnt/etc/
-ln -sf ../run/systemd/resolve/stub-resolv.conf /mnt/etc/resolv.conf
+
 archinstall --advanced --config /home/jason/jasolinux/Source/user_configuration.json --creds /home/jason/jasolinux/Source/user_credentials.json --silent
+ln -sf ../run/systemd/resolve/stub-resolv.conf /mnt/etc/resolv.conf
 
 echo 'Defaults:jason      !authenticate' >>/mnt/etc/sudoers
 sed -i 's/#auth           sufficient      pam_wheel.so trust use_uid/auth           sufficient      pam_wheel.so trust use_uid/' /mnt/etc/pam.d/su
