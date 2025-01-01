@@ -17,7 +17,9 @@ mkfs.fat -F 32 -n $esp /dev/disk/by-label/$esp
 mkfs.$FS -L $lin /dev/disk/by-label/$lin
 #mkswap -L $swap /dev/disk/by-label/$swap
 mount /dev/disk/by-label/$lin /mnt
+rm -rf /mnt
 mount -m /dev/disk/by-label/$esp /mnt/boot
+rm -rf /mnt/boot
 
 mkdir -p /mnt/etc/pacman.d/hooks
 
