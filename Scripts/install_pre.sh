@@ -3,7 +3,7 @@
 #|--/ /-| Script to apply pre install configs |--/ /-|#
 #|-/ /--| Prasanth Rangan                     |-/ /--|#
 #|/ /---+-------------------------------------+/ /---|#
-echo -ne '1111' | sudo -S echo "Initialized_Pre"
+
 scrDir=$(dirname "$(realpath "$0")")
 source "${scrDir}/global_fn.sh"
 if [ $? -ne 0 ]; then
