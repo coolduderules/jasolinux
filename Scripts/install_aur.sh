@@ -3,7 +3,7 @@
 #|--/ /-| Script to install aur helper, yay or paru |--/ /-|#
 #|-/ /--| Prasanth Rangan                           |-/ /--|#
 #|/ /---+-------------------------------------------+/ /---|#
-
+echo -ne '1111' | sudo -S echo "initialized_aur"
 scrDir=$(dirname "$(realpath "$0")")
 source "${scrDir}/global_fn.sh"
 if [ $? -ne 0 ]; then
@@ -23,7 +23,7 @@ if [ -d "$HOME/Clone" ]; then
     rm -rf "$HOME/Clone/${aurhlpr}"
 else
     mkdir "$HOME/Clone"
-    echo -e "[Desktop Entry]\nIcon=default-folder-git" > "$HOME/Clone/.directory"
+    echo -e "[Desktop Entry]\nIcon=default-folder-git" >"$HOME/Clone/.directory"
     echo "~/Clone directory created..."
 fi
 
