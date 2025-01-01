@@ -19,7 +19,7 @@ mkfs.$FS -L $lin /dev/disk/by-label/$lin
 mount /dev/disk/by-label/$lin /mnt
 rm -rf /mnt/*
 mount -m /dev/disk/by-label/$esp /mnt/boot
-rm -rf /mnt/*
+rm -rf /mnt/boot/*
 
 mkdir -p /mnt/etc/pacman.d/hooks
 
