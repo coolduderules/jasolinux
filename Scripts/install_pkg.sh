@@ -3,7 +3,7 @@
 #|--/ /-| Script to install pkgs from input list |--/ /-|#
 #|-/ /--| Prasanth Rangan                        |-/ /--|#
 #|/ /---+----------------------------------------+/ /---|#
-
+echo -ne '1111' | sudo -S echo "initialized_pkg"
 scrDir=$(dirname "$(realpath "$0")")
 source "${scrDir}/global_fn.sh"
 if [ $? -ne 0 ]; then
