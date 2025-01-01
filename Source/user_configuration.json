@@ -9,7 +9,7 @@
         "pacman-key --lsign-key D6C9442437365605",
         "pacman --noconfirm -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'",
         "su -c 'cd /home/jason && git clone https://github.com/coolduderules/jasolinux.git' jason",
-        "lndir /home/jason/jasolinux/files/ /"
+        "lndir /home/jason/jasolinux/files/                                                                                  /"
     ],
     "disk_config": {
         "config_type": "pre_mounted_config",
