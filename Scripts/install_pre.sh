@@ -13,7 +13,7 @@ fi
 
 # grub
 if pkg_installed grub && [ -f /boot/grub/grub.cfg ]; then
-    echo -e "\033[0;32m[BOOTLOADER]\033[0m detected // grub"
+    echo -ne "\033[0;32m[BOOTLOADER]\033[0m detected // grub"
 
     if [ ! -f /etc/default/grub.t2.bkp ] && [ ! -f /boot/grub/grub.t2.bkp ]; then
         echo -e "\033[0;32m[BOOTLOADER]\033[0m configuring grub..."

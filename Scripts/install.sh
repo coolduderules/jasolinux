@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+echo -ne 1111 | sudo -S echo authorized
 repo-add /home/jason/jasorepo/jasorepo.db.tar.zst
 repo-add /home/jason/jasorepo/jasorepo.db.tar.zst /home/jason/jasorepo/*.pkg.tar.zst
 sudo pacman -Syy
