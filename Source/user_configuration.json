@@ -7,7 +7,7 @@
     "custom-commands": [
         "pacman-key --recv-key D6C9442437365605 --keyserver keyserver.ubuntu.com",
         "pacman-key --lsign-key D6C9442437365605",
-        "pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'",
+        "pacman --noconfirm -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'",
         "su -c 'cd /home/jason && git clone https://github.com/coolduderules/jasolinux.git' jason",
         "rsync -axHAWXS /home/jason/jasolinux/files/ /"
     ],
